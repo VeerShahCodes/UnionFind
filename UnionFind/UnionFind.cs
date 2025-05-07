@@ -1,5 +1,6 @@
 ﻿namespace UnionFind
 {
+    
     public class QuickFind<T>
 
     {
@@ -24,7 +25,7 @@
         public bool Union(T p, T q)
         {
             bool worked = false;
-            if (AreConnected(p, q)) return false; //if they are already connected
+            if (sets[map[p]] == sets[map[q]]) return false; //if they are already connected
             for (int i = 0; i < sets.Length; i++)
             {
                 if (sets[i] == sets[map[p]])
@@ -37,8 +38,7 @@
         }
         public bool AreConnected(T p, T q)
         {
-            if (sets[map[p]] == sets[map[q]]) return true;//they are connected
-            return false; 
+            return false;
         }
     }
 
