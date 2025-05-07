@@ -41,7 +41,7 @@
             return false;
         }
     }
-
+    
     public class QuickUnion<T>
     {
         private int[] parents;
@@ -49,7 +49,15 @@
 
         public QuickUnion(IEnumerable<T> items)
         {
-
+            parents = new int[items.Count()];
+            map = new Dictionary<T, int>();
+            int i = 0;
+            foreach (var item in items)
+            {
+                map[item] = i;
+                parents[i] = i;
+                i++;
+            }
         }
 
         public int Find(T p)
