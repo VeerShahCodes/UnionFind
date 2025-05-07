@@ -28,7 +28,7 @@
             if (sets[map[p]] == sets[map[q]]) return false; //if they are already connected
             for (int i = 0; i < sets.Length; i++)
             {
-                if (sets[i] == sets[map[p]])
+                if (sets[i] == sets[map[p]]) //union
                 {
                     sets[i] = sets[map[q]];
                     worked = true;
@@ -47,7 +47,7 @@
         private int[] parents;
         private Dictionary<T, int> map;
 
-        public QuickUnion(IEnumerable<T> items)
+        public QuickUnion(IEnumerable<T> items) //same as quick find
         {
             parents = new int[items.Count()];
             map = new Dictionary<T, int>();
@@ -62,7 +62,12 @@
 
         public int Find(T p)
         {
-            return 0;
+            int currIndex = map[p];
+            while(currIndex != parents[currIndex])
+            {
+                currIndex = parents[currIndex]; //finds the root
+            }
+            return currIndex;
         }
         public bool Union(T p, T q)
         {
