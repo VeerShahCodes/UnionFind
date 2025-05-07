@@ -8,11 +8,14 @@
 
         public QuickFind(IEnumerable<T> items)
         {
-            sets = new int[items.Count()];
+            
+            sets = new int[items.Count()]; //initalizes the array to the number of items
             int i = 0;
-            foreach(var item in items)
+            map = new Dictionary<T, int>();
+            foreach (var item in items) //loops through all items
             {
-                sets[i] = item
+                map[item] = i;//maps item to its index cus u cant put T in int array
+                sets[i] = i;   
                 i++;
             }
         }
