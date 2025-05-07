@@ -23,7 +23,17 @@
         public int Find(T p) => sets[map[p]];
         public bool Union(T p, T q)
         {
-            return false;
+            bool worked = false;
+            if (sets[map[p]] == sets[map[q]]) return false; //if they are already connected
+            for (int i = 0; i < sets.Length; i++)
+            {
+                if (sets[i] == sets[map[p]])
+                {
+                    sets[i] = sets[map[q]];
+                    worked = true;
+                }
+            }
+            return worked;
         }
         public bool AreConnected(T p, T q)
         {
