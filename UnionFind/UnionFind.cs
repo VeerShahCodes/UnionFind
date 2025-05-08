@@ -71,10 +71,15 @@
         }
         public bool Union(T p, T q)
         {
-            return false;
+            int rootP = Find(p);
+            int rootQ = Find(q);
+            if (rootP == rootQ) return false; //if they are already connected
+            parents[rootP] = rootQ; //union
+            return true;
         }
         public bool AreConnected(T p, T q)
         {
+            
             return false;
         }
     }
