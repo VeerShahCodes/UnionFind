@@ -38,6 +38,7 @@
         }
         public bool AreConnected(T p, T q)
         {
+            if (sets[map[p]] == sets[map[q]]) return true;
             return false;
         }
     }
@@ -79,7 +80,9 @@
         }
         public bool AreConnected(T p, T q)
         {
-            
+            int rootP = Find(p);
+            int rootQ = Find(q);
+            if (rootP == rootQ) { return true; }
             return false;
         }
     }
